@@ -1,10 +1,9 @@
+
 import pandas as pd
-import numpy as np
-import requests
-import io
 
-df = pd.read_csv(io.StringIO(download.decode('utf-8')))
+df=pd.read_csv('input/question-3/main.csv',usecols = ['Team','Yellow Cards','Red Cards'])
 
-years_sum =  df.groupby(np.floor((df['Year']/10))).agg({'Violent':'sum','Property':'sum','Murder':'sum','Forcible_Rape':'sum','Robbery':'sum','Aggravated_assault':'sum','Burglary':'sum','Larceny_Theft':'sum','Vehicle_Theft':'sum'})
 
-print(years_sum)
+sorted_df = df.sort_values(by=["Red Cards","Yellow Cards"], ascending=[False,False])
+sorted_df.to_csv('output/answer-3/answer3.csv')
+print(sorted_df)
